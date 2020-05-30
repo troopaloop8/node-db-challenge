@@ -48,6 +48,8 @@ function getResourcesByProjectId(id) {
     .where({ "p.id": id });
 }
 
+
+
 //CREATE HELPERS
 
 function addProject(project) {

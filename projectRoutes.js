@@ -1,8 +1,11 @@
 const express = require('express');
 const knex = require('knex');
+const router = express.Router();
+
 const db = require('./data/models/projectModels.js');
 
-const router = express.Router();
+
+//GET AND POST ENDPOINTS FOR PROJECTS, TASKS, AND RESOURCES
 
 router
     .route("/")
@@ -67,6 +70,8 @@ router
         })
     });
 
+// ENDPOINTS TO CALL THE ID FOR INDIVIDUAL TASKS AND RESOURCES
+
 router
     .route('/tasks/:id')
     .get((req, res) => {
@@ -94,3 +99,7 @@ router
     });
 
 
+
+//EXPORT
+
+module.exports = router
