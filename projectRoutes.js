@@ -98,6 +98,34 @@ router
         })
     });
 
+//ADVANCED GET HELPER ENDPOINTS
+
+router
+    .route('/:id/resources')
+    .get((req, res) => {
+        const {id} = req.params;
+        db.getResourcesByProjectId(id)
+        .then(resourceInfo => {
+            res.status(200).json(resourceInfo)
+        })
+        .catch(err => {
+            res.status(500).json({message: `Something went wrong... ${err}, ${err.message}`})
+        })
+    });
+
+router
+    .route('/:id/tasks')
+    .get((req, res) => {
+        const {id} = req.params;
+        db.getTasksByProjectId(id)
+        .then(taskInfo => {
+            res.status(200).json(taskInfo)
+        })
+        .catch(err => {
+            res.status(500).json({message: `Something went wrong... ${err}, ${err.message}`})
+        })
+    });
+
 router
     .route("/:id")
     .get((req, res) => {
